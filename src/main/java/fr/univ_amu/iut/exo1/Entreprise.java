@@ -43,17 +43,16 @@ public class Entreprise
     {
         getList().remove(e);
     }
-
-    public void toString(Entreprise e)
+    @Override
+    public String toString()
     {
         String statut = "";
-        for (Employe emp : e.getList())
+        for (Employe emp : listeEmploye)
         {
-            statut += emp.toString() + "/n";
+            statut += emp.Afficher() + "\n";
         }
 
-        System.out.println(
-                e.getNom()+" "+ statut
-                );
+        return nom+" "+ statut;
+
     }
 }

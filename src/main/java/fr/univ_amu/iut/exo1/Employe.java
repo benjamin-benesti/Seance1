@@ -60,19 +60,21 @@ public class Employe
 
     protected Double getNbHeure(){return this.NbHeure ;}
 
-    public void toString(Employe e)
+
+
+    public String Afficher()
     {
-        System.out.println((e.getNom()+e.getPrenom()+e.getNumEmp()+e.getNumSecSoc()+e.getEchelon()+e.getNaissance()+e.getEmbauche())+CalcSalBrut(e)+CalcSalNet(e));
+        return Nom+" "+Prenom+NumEmp+NumSecSoc+Echelon+Naissance+Embauche+CalcSalBrut()+CalcSalNet();
     }
 
-    public Double CalcSalBrut (Employe e)
+    public Double CalcSalBrut ()
     {
-        return e.getBase() *  e.getNbHeure();
+        return Base*  NbHeure;
     }
 
-    public Double CalcSalNet (Employe e)
+    public Double CalcSalNet ()
     {
-        return e.getBase() *  e.getNbHeure() * 80 /100 ;
+        return CalcSalBrut() * 80 /100 ;
     }
 
 }
