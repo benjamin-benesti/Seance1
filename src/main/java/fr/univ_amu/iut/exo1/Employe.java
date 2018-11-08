@@ -12,8 +12,10 @@ public class Employe
     private int Echelon;
     private LocalDate Naissance;
     private LocalDate Embauche;
+    private Double Base;
+    private Double NbHeure;
 
-    public Employe(int numEmp, String numSecSoc, String nom, String prenom, int echelon, LocalDate naissance, LocalDate embauche)
+    public Employe(int numEmp, String numSecSoc, String nom, String prenom, int echelon, LocalDate naissance, LocalDate embauche ,Double base,Double nbHeure)
     {
         this.NumEmp = numEmp;
         this.NumSecSoc = numSecSoc;
@@ -22,39 +24,55 @@ public class Employe
         this.Echelon = echelon;
         this.Naissance = naissance;
         this.Embauche = embauche;
+        this.Base = base;
+        this.NbHeure = nbHeure;
     }
 
-    public int getNumEmp() {
-        return NumEmp;
+    protected int getNumEmp() {
+        return this.NumEmp;
     }
 
-    public String getNumSecSoc() {
-        return NumSecSoc;
+    protected String getNumSecSoc() {
+        return this.NumSecSoc;
     }
 
-    public String getNom() {
-        return Nom;
+    protected String getNom() {
+        return this.Nom;
     }
 
-    public String getPrenom() {
-        return Prenom;
+    protected String getPrenom() {
+        return this.Prenom;
     }
 
-    public int getEchelon() {
-        return Echelon;
+    protected int getEchelon() {
+        return this.Echelon;
     }
 
-    public LocalDate getNaissance() {
-        return Naissance;
+    protected LocalDate getNaissance() {
+        return this.Naissance;
     }
 
-    public LocalDate getEmbauche() {
-        return Embauche;
+    protected LocalDate getEmbauche() {
+        return this.Embauche;
     }
 
-    public void AffichePersonne(Employe e)
+    protected Double getBase() {return this.Base;}
+
+    protected Double getNbHeure(){return this.NbHeure ;}
+
+    public void toString(Employe e)
     {
-        String affichage = e.getNom()+e.getPrenom()+e.getNumEmp()+e.getNumSecSoc()+e.getEchelon()+e.getNaissance()+e.getEmbauche();
+        System.out.println((e.getNom()+e.getPrenom()+e.getNumEmp()+e.getNumSecSoc()+e.getEchelon()+e.getNaissance()+e.getEmbauche())+CalcSalBrut(e)+CalcSalNet(e));
+    }
+
+    public Double CalcSalBrut (Employe e)
+    {
+        return e.getBase() *  e.getNbHeure();
+    }
+
+    public Double CalcSalNet (Employe e)
+    {
+        return e.getBase() *  e.getNbHeure() * 80 /100 ;
     }
 
 }
