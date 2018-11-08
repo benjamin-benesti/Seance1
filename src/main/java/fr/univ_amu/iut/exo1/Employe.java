@@ -2,6 +2,7 @@ package fr.univ_amu.iut.exo1;
 
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Employe
 {
@@ -14,6 +15,8 @@ public class Employe
     private LocalDate Embauche;
     private Double Base;
     private Double NbHeure;
+
+    public Employe(){}
 
     public Employe(int numEmp, String numSecSoc, String nom, String prenom, int echelon, LocalDate naissance, LocalDate embauche ,Double base,Double nbHeure)
     {
@@ -60,16 +63,21 @@ public class Employe
 
     protected Double getNbHeure(){return this.NbHeure ;}
 
+    protected long getAnciennete()
+    {
+        long nbMois = ChronoUnit.MONTHS.between(getEmbauche(),LocalDate.now());
+        return nbMois;
+    }
 
 
     public String Afficher()
     {
-        return Nom+" "+Prenom+NumEmp+NumSecSoc+Echelon+Naissance+Embauche+CalcSalBrut()+CalcSalNet();
+        return Nom+" "+Prenom+" "+NumEmp+" "+NumSecSoc+" "+Echelon+" "+Naissance+" "+Embauche+" "+CalcSalBrut()+" "+CalcSalNet();
     }
 
     public Double CalcSalBrut ()
     {
-        return Base*  NbHeure;
+        return Base *  NbHeure +100;
     }
 
     public Double CalcSalNet ()
